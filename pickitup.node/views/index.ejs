@@ -1,0 +1,173 @@
+{% extends 'layout.ejs' %}
+
+{% block content %}
+
+	<section id="main-slider" class="carousel">
+        <div class="carousel-inner">
+            <div class="item active">
+                <div class="container">
+                    <div class="carousel-content">
+                        <h1>PickItUp!</h1>
+                        <p class="lead">Find casual pickup games in your area!</p>
+						{% if !userAuthenticated %}
+							<p>
+								<a href="/signup" role="button" class="btn btn-lg btn-primary">Sign Up! &#187;</a>
+							</p>
+							<p>
+								<a id="signupFB" href="#" role="button" class="btn btn-lg btn-primary">Sign Up with Facebook! &#187;</a>
+							</p>
+						{% endif %}
+                    </div>
+                </div>
+            </div><!--/.item-->
+        </div><!--/.carousel-inner-->
+        <a class="prev" href="#main-slider" data-slide="prev"><i class="icon-angle-left"></i></a>
+        <a class="next" href="#main-slider" data-slide="next"><i class="icon-angle-right"></i></a>
+    </section><!--/#main-slider-->
+
+	<section id="services">
+        <div class="container">
+            <div class="box first">
+                <div class="row">
+                    <div class="col-md-4 col-sm-6">
+                        <div class="center">
+                            <i class="icon-courts icon-md icon-color1"></i>
+                            <h4>Find Courts</h4>
+                            <p>Find the courts that are nearby or in a specific place. Discover the famous spots as well as unknown gems.</p>
+                        </div>
+                    </div><!--/.col-md-4-->
+                    <div class="col-md-4 col-sm-6">
+                        <div class="center">
+                            <i class="icon-players icon-md icon-color2"></i>
+                            <h4>Meet Players</h4>
+                            <p>Meet up with all players in your neighbourhood and play pick-up basketball. Meet new people, anywhere you are.</p>
+                        </div>
+                    </div><!--/.col-md-4-->
+                    <div class="col-md-4 col-sm-6">
+                        <div class="center">
+                            <i class="icon-ball icon-md icon-color3"></i>
+                            <h4>Start Playing</h4>
+                            <p>Use our app and get your game started in minutes. No more need to organize when, where and who... Use our platform instead.</p>
+                        </div>
+                    </div><!--/.col-md-4-->
+                </div><!--/.row-->
+            </div><!--/.box-->
+        </div><!--/.container-->
+    </section><!--/#services-->
+	
+	<section id="testimonials">
+        <div class="container">
+            <div class="box">
+				<div class="center">
+					<div class="testimonials">
+						<ul class="gallery-list">
+							<li class="active">
+								<blockquote>
+									<q> This is something I will definitely use whenever I feel like balling!</q>
+									<cite><strong>Jeroen Meeus</strong> -- Basketball Player, Leuven</cite>
+								</blockquote>
+							</li>
+							<li>
+								<blockquote>
+									<q>PickItUp is easy, fast and looking slick. I&#39;d sign up the first day it were online.</q>
+									<cite><strong>David Van der Mullen</strong> -- Basketball Player, Brussels</cite>
+								</blockquote>
+							</li>
+							<li>
+								<blockquote>
+									<q>Really cool idea.. Make sure you have all technical stuff ligned up and position yourself well to your users. From there, this could take off!</q>
+									<cite><strong>Steven Vansina</strong> -- Marketing Manager, Stievie</a></cite>
+								</blockquote>
+							</li>
+						</ul>
+					</div>
+				</div>
+            </div><!--/.box-->
+        </div><!--/.container-->
+    </section><!--/#services-->
+	
+{% endblock %}
+
+{% block pageJs %}
+	<div id="fb-root"></div>
+    <script type="text/javascript">
+		window.fbAsyncInit = function() {
+			FB.init({
+			appId : '1432974593617773',
+			status : true,
+			xfbml : true
+			});
+			FB.Event.subscribe('auth.authResponseChange', function(response) {
+				if (response.status === 'connected') {
+					console.log(response);
+				} else {
+					FB.login(function(response) {
+						if (response.authResponse) {
+						  console.log('Welcome!  Fetching your information.... ');
+						  FB.api('/me', function(response) {
+						    console.log('Good to see you, ' + response.name + '.');
+						  });
+						} else {
+						  console.log('User cancelled login or did not fully authorize.');
+						}
+					});
+				}
+			});
+		};
+		
+		
+		// Here we run a very simple test of the Graph API after login is successful. 
+		// This testAPI() function is only called in those cases. 
+		function testAPI() {
+			console.log('Welcome! Fetching your information.... ');
+			FB.api('/me', function(response) {
+				console.log(response);
+				console.log('Good to see you, ' + response.name + '.');
+			});
+		}
+		
+		(function(d, s, id){
+		 var js, fjs = d.getElementsByTagName(s)[0];
+		 if (d.getElementById(id)) {return;}
+		 js = d.createElement(s); js.id = id;
+		 js.src = "//connect.facebook.net/en_US/all.js";
+		 fjs.parentNode.insertBefore(js, fjs);
+		 }(document, 'script', 'facebook-jssdk'));
+
+		 $('#signupFB').on('click',function(){
+			 FB.login(function(response) {
+				if (response.authResponse) {
+					 FB.api('/me', function(personaldata) {
+							if (personaldata && !personaldata.error) {
+								FB.api(
+								    "/me/picture",
+								    function (picturedata) {
+									    console.log(personaldata);
+										$.post( "/signup_fb", { 
+											firstname: personaldata.first_name,
+											lastname: personaldata.last_name,
+											email: personaldata.email,
+											fb_id: personaldata.id,
+											description: personaldata.about,
+											playerSex: personaldata.gender,
+											dateOfBirth: personaldata.birthday,
+											picture: picturedata.data.url,
+										},
+										function(data, textStatus) {
+									        if (data.redirect) {
+									            // data.redirect contains the string URL to redirect to
+									            window.location.href = data.redirect;
+									        }
+									    });
+								    }
+								);
+							}
+						 });
+				} else {
+				  console.log('User cancelled login or did not fully authorize.');
+				}
+			});
+			
+			 return false;
+		 });
+    </script>
