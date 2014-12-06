@@ -75,7 +75,7 @@ exports.getByGameId = function(gameUniqueId, callback) {
          if (err) return callback(err);
          var users = results.map(function (result) {
         	 var user = new User(result['user']);
-             return {uniqueId: user.uniqueId, screenName: user.screenName};
+             return {uniqueId: user.uniqueId, screenName: user.screenName, description: user.description};
          });
          callback(null, users);
      });

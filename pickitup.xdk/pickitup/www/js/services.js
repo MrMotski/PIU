@@ -3,7 +3,23 @@
 /* Services */
 var services = angular.module('services', ['ngResource']); 
 
-var server = 'http://pickitupbasketball.co/v2';
+//var server = 'http://pickitupbasketball.co/v2';
+var server = 'localhost:3000'
+
+
+/* PickItUpService
+
+	This is where the asynchronous API calls to the nodeJS server happen.
+	getGames: GET /api/list
+	getGamesCount: GET /api/count
+	submitGame: POST /api/createGame
+	joinGame: POST /api/nearme/join/:id
+	leaveGame: POST /api/nearme/leave/:id
+	gameInfo: GET /api/game/:id
+	playerInfo: GET /api/player/:id
+	myDetails: GET /api/me
+
+*/
 
 services.factory('PickitUpService', [ '$http', '$window', 'Map', function($http, $window, Map) {
 	return {
@@ -62,6 +78,14 @@ services.factory('PickitUpService', [ '$http', '$window', 'Map', function($http,
 		}
 	};
 } ]);
+
+
+/* AuthService
+	
+	This is where all the login/logout handling occurs
+	
+*/
+
 
 services.factory('AuthService', [ '$http', '$window', '$location', function($http, $window, $location) {
 	return {

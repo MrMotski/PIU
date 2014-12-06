@@ -6,8 +6,9 @@ var async = require('async');
 var expressJwt = require('express-jwt');
 var jwt = require('jsonwebtoken');
 
+
 exports.index = function(req, res, next) {
-	var userAuthenticated = (req.session.isLoggedIn == true);
+	var userAuthenticated = false; /*(req.session.isLoggedIn == true);*/
 	res.render('index', {
 		userAuthenticated : userAuthenticated
 	});
@@ -24,7 +25,6 @@ exports.login_proceed = function(req, res, next) {
 	UserHandling.getByEmail(req.body.username, function(err, user) {
 		if (err)
 			return next(err);
-
 		res.header('Cache-Control', 'no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0');
 		if (user == null || user.password != req.body.password) {
 			res.send(401, 'Wrong user or password');
@@ -49,10 +49,8 @@ exports.login_proceed = function(req, res, next) {
 };
 
 exports.login_fb = function(req, res, next) {
-	console.log('fb_id ' + req.body.fb_id);
-	UserHandling.getByFbId(
-		req.body.fb_id,
-		function (err, user) {
+//	console.log('fb_id ' + req.body.fb_id);
+	UserHandling.getByFbId(req.body.fb_id, function (err, user) {
 			if (err)
 				return next(err);
 			
@@ -71,8 +69,7 @@ exports.login_fb = function(req, res, next) {
 			res.json({
 				token : token
 			});
-	    });
-	
+	    });	
 };
 
 exports.logout = function(req, res, next) {
@@ -88,9 +85,7 @@ exports.me = function(req, res, next) {
 	async.series([
       //Load user to get userId first
       function (callback){
-    	  UserHandling.getByUniqueId(
-			userUniqueId,
-			function (err, foundUser) {
+    	  UserHandling.getByUniqueId(userUniqueId, function (err, foundUser) {
 				if (err) return callback(err);
 				user = foundUser;
 				callback();
@@ -208,9 +203,7 @@ exports.signup_proceed = function(req, res, next) {
     		hasErrors: true
     	});
 	} else {
-		UserHandling.create(
-			data, 
-			function (err, user) {
+		UserHandling.create(data, function (err, user) {
 				if (err) return next(err);
 				var profile = {
 					first_name : user.firstname,
@@ -280,11 +273,9 @@ exports.signup_fb_proceed = function(req, res, next) {
 
 exports.nearme = function(req, res, next) {
 	var userAuthenticated = (req.session.isLoggedIn == true);
-	res.render('nearme', {
-		userAuthenticated : userAuthenticated
-	});
+	res.render('nearme', { userAuthenticated : userAuthenticated });
 };
 
 function isEmpty(str) {
 	return (typeof str == 'undefined' || str.length == 0);
-}
+}	
