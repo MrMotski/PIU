@@ -1,56 +1,61 @@
 <section id="main-slider-near-me" class="carousel">
-	<div class="container-fluid">
-		<!-- Main component for a primary marketing message or call to action -->
-		<div class="col-lg-12 well">
-			<div class="row">
-				<div class="col-lg-12" id="map-canvas" style="height: 300px;"></div>
-			</div>
-			<br/>
-			<div class="row">
-				<ul class="nav nav-pills nav-justified">
-				<li class="active">
-					<a data-target="#" data-toggle="tab" ng-click="setTimeSpan(0)">
-					<span id="games0" class="badge pull-right">{{games0}}</span>
-					Next 2 hours
-					</a>
-				</li>
-				<li>
-					<a data-target="#" data-toggle="tab" ng-click="setTimeSpan(1)">
-					<span id="games1" class="badge pull-right">{{games1}}</span>
-					Today
-					</a>
-				</li>
-				<li>
-					<a data-target="#" data-toggle="tab" ng-click="setTimeSpan(2)">
-					<span id="games2" class="badge pull-right">{{games2}}</span>
-					Tomorrow
-					</a>
-				</li>
-				<li>
-					<a data-target="#" data-toggle="tab" ng-click="setTimeSpan(3)">
-					<span id="games3" class="badge pull-right">{{games3}}</span>
-					Next week
-					</a>
-				</li>
-				</ul>
-			</div>
-			<div id="list">
-				<div class="row" ng-repeat="game in games">
-					<div class="col-lg-12 well" >
-						<h5>
-							<span class="badge" style="background-color: #AE4D4D; color: #000"></span>
-							<a href="#/game/{{game.uniqueId}}">{{game.name}}</a>
-							<div class="pull-right">
-								Posted By: <a href="#/player/{{game.createdByUniqueId}}">{{game.createdBy}}</a>
-							</div>
-						</h5>
-						Comments: {{game.description}} <br /> 
-						<span style="font-weight: 600;">Date:</span>{{game.date}} <br />
-						<br />
-						<div class="game-buttons">
-							<a ng-if="game.alreadyJoined" class="btn btn-sm btn-danger btn-join joined" role="button" ng-click="leaveGame(game)">Leave &#187;</a>
-							<a ng-if="!game.alreadyJoined" class="btn btn-sm btn-primary btn-join" role="button" ng-click="joinGame(game)">Join &#187;</a>
-						</div>
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-11 col-centered well">
+				<div class="row">
+					<div class="col-xs-12" id="map-canvas"></div>
+				</div>
+				<div class="row">
+					<ul class="nav nav-pills nav-justified">
+						<li class="active">
+							<a data-target="#" data-toggle="tab" ng-click="setTimeSpan(0)">
+							<span id="games0" class="badge pull-right">{{games0}}</span>
+							Next 2 hours
+							</a>
+						</li>
+						<li>
+							<a data-target="#" data-toggle="tab" ng-click="setTimeSpan(1)">
+							<span id="games1" class="badge pull-right">{{games1}}</span>
+							Today
+							</a>
+						</li>
+						<li>
+							<a data-target="#" data-toggle="tab" ng-click="setTimeSpan(2)">
+							<span id="games2" class="badge pull-right">{{games2}}</span>
+							Tomorrow
+							</a>
+						</li>
+						<li>
+							<a data-target="#" data-toggle="tab" ng-click="setTimeSpan(3)">
+							<span id="games3" class="badge pull-right">{{games3}}</span>
+							Next week
+							</a>
+						</li>
+					</ul>
+				</div>
+				
+				<div id="list">
+					<div class="row" ng-repeat="game in games">
+						<div class="col-lg-12 well" >
+							<h5>
+								<span class="badge" style="background-color: #AE4D4D; color: #000"></span>
+								<a href="#/game/{{game.uniqueId}}">{{game.name}}</a>
+								<div class="pull-right">
+									Posted By: <a href="#/player/{{game.createdByUniqueId}}">{{game.createdBy}}</a>
+								</div>
+							</h5>
+							
+							Comments: {{game.description}} <br /> 
+							
+							<span style="font-weight: 600;">Date:</span>{{game.date}} <br />
+							
+							<br />
+							
+							<div class="game-buttons">
+								<a ng-if="game.alreadyJoined" class="btn btn-sm btn-danger btn-join joined" role="button" ng-click="leaveGame(game)">Leave &#187;</a>		
+								<a ng-if="!game.alreadyJoined" class="btn btn-sm btn-primary btn-join" role="button" ng-click="joinGame(game)">Join &#187;</a>		
+							</div>		
+						</div>		
 					</div>
 				</div>
 			</div>
