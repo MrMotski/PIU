@@ -1,34 +1,37 @@
-<section id="main-slider-near-me" class="carousel">
-	<div class="container-fluid">
-		<!-- Main component for a primary marketing message or call to action -->
-		<div class="col-lg-3"></div>
-		<div class="col-lg-6 well">
-			<h1 style="text-align: center">Login</h1>
+<div id="main-slider-login" class="carousel">
+	<div class="container">
+	<div class="row">
+		<div class="col-xs-10 col-sm-7 col-md-6 col-lg-5 col-centered login-container well">
+			<!--<h1 style="text-align: center">Login</h1>-->
 			{{status}}
 			<div class="row">
-				<div class="col-lg-12">
-					<form role="form" name="loginForm" ng-submit="login(credentials)"
-						novalidate>
+				<div class="col-xs-12">
+					<form role="form" name="loginForm" ng-submit="login(credentials)" novalidate>
 						<div class="form-group">
-							<label class="control-label" for="username">Username</label> <input
-								ng-model="credentials.username" type="text" class="form-control"
-								id="name" name="username" placeholder="ex: iamauser" />
+							<label class="control-label" cfor="email">E-mail</label>
+							<input required type="text" ng-model="credentials.email" ng-class="getLoginUnsuccesful(credentials)"  class="form-control" id="email" name="email" placeholder="john.doe@gmail.com" />
 						</div>
 						<div class="form-group">
-							<label class="control-label" for="password">Password</label> <input
-								ng-model="credentials.password" type="password"
-								class="form-control" id="password" name="password"
-								placeholder="ex: mypass" />
+							<label class="control-label" for="password">Password</label>
+							<input required ng-model="credentials.password" type="password" class="form-control" id="password" name="password" placeholder="ex: mypass" />
 						</div>
-						<div>
-							<div style="float:left"><input type="submit" role="button" value="Login" class="btn btn-lg btn-primary" /></div>
-							<div style="float:left"><a role="button" class="btn btn-lg btn-primary" ng-click="login_fb()">Login with FB</a></div>
+						<div ng-show="credentials.failedLogin" class="login-failed-text">
+							Wrong Email/Password Combination
+						</div>
+						<div class="row">
+							<div ng-click="login(credentials)" class="signup-button signup-button-form col-xs-6 col-centered">
+   								Log In
+   							</div>
 						</div>
 					</form>
-					
 				</div>
-			</div>
+			</div>	
+			<p class= "fb-intro"> ------------ OR ------------ </p>
+			<div class="row">
+   				<div class="signup-button signup-button-facebook fb-bg col-xs-12" ng-click="login_fb()">
+   					Log In With Facebook
+   				</div>
+   			</div>				
 		</div>
-		<div class="col-lg-3"></div>
 	</div>
-</section>
+</div>
