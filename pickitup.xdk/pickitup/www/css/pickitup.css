@@ -1,13 +1,157 @@
-/*
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
-*/
 /* 
-    Created on : Apr 5, 2014, 5:18:47 PM
-    Author     : JP
+    Created on : Nov 19, 2014
+    Author     : Fréderick Motte
 */
+
+.col-centered{
+    float: none;
+    margin: 0 auto;
+}
+
+.profile-picture {
+  background-size: contain;
+}
+
+p.profile {
+  font-family: 'Oswald', sans-serif;
+  font-size: 20px;
+  text-align: center;
+}
+
+.login-failed-text {
+  color: red;
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+.login-unsuccessful {
+  background-color: red;
+}
+
+#email.ng-valid {
+
+}
+
+#email.ng-dirty {
+
+}
+
+@media(max-width:767px){
+  #map-canvas {
+    height: 300px;
+  }
+
+  .col-xs-centered {
+    float: none;
+    margin: 20px auto;
+  }
+}
+
+@media(min-width:768px){
+  #map-canvas {
+    height: 400px;
+  }
+}
+
+@media(min-width:992px){
+  #map-canvas {
+    height: 500px;
+  }
+}
+
+@media(min-width:1200px){
+  #map-canvas {
+    height: 500px;
+  }
+}
+
+
+@import url(http://fonts.googleapis.com/css?family=Oswald);
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300,700);
+
+.login-container, .signup-container {
+  background-color: rgba(17,17,17,0.55);
+  background-image: none;
+  color: white;
+  padding-top: 20px;  
+  text-transform: uppercase;
+}
+
+.login-container, .login-container h1, .signup-container {
+  color: white;
+}
+
+.signup-container p, .login-container p, .signup-container * label, .login-container * label {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-bottom: 0px;
+  text-align: center;
+  display: block;
+}
+
+.signup-container p, .login-container p {
+  margin-top: 15px;
+  margin-bottom: 15px
+}
+
+.signup-button {
+  padding-top: 5px;
+  font-family: 'Oswald', sans-serif;
+  text-align: center;
+  font-size: 20px;
+  height: 37px;
+}  
+
+.signup-button-form {
+  margin-top: 15px;
+  background-color: #C32315;
+} 
+
+.signup-button-facebook {
+  background-image: url(../img/facebook-logo.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-color: #3b5998;
+  height: 37px;
+}
+
+#services * p, #testimonials * cite {
+  color: #777;
+}
+
+/* Link styles */
+a, a:visited, a:hover {
+  color: #e74c3c;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #a05772;
+}
+
+/* Facebook */
+/*.signup-fb-intro, .login-fb-intro {
+  text-align: center;
+}*/
+
+.fb-icon-bg {
+  background-repeat: no-repeat;
+  background-size: 80%;
+  background-color: #3b5998;
+}
+
+
+.fb-bg:after {
+}
+
+.fb-bg:hover{
+  cursor: pointer;
+}
+
+.fb-bg:active{
+  background: #354f88;
+}
+
 body {
   background: #e5e5e5;
   color: #999;
@@ -21,7 +165,58 @@ h5,
 h6 {
   color: #777;
   font-weight: 300;
+  text-align: center;
 }
+
+@media(max-width:767px){
+    h1 {
+    font-size:19px
+  }
+    h2 {
+    font-size:17px
+  }
+  h3 {
+    font-size:15px
+  }
+}
+
+@media(min-width:768px){
+    h1 {
+    font-size:28px
+  }
+    h2 {
+    font-size:23px
+  }
+  h3 {
+    font-size:18px
+  }
+}
+
+@media(min-width:992px){
+   h1 {
+    font-size:32px
+  }
+  h2 {
+    font-size:26px
+  }
+  h3 {
+    font-size:20px
+  }
+}
+
+@media(min-width:1200px){
+    h1 {
+    font-size:34px
+  }
+  h2 {
+    font-size:27px
+  }
+  h3 {
+    font-size:22px
+  }
+}
+
+
 a {
   color: #52b6ec;
   -webkit-transition: 300ms;
@@ -57,15 +252,42 @@ a:focus {
   height: 80px;
   z-index: 99999;
 }
+
 #main-slider {
-  /*background-image: url('../img/background_layered.png');*/
+  background-image: url('../img/background_layered.png');
+  padding: 240px 0 240px 0;
+  color: #fff;
+}
+
+#main-slider-near-me {
+  background-image: url('../img/background2_layered.png');
+  padding: 15px 0 240px 0;
+}
+
+#main-slider-create-game {
+  background-image: url('../img/background3_layered.png');
+  height: 150vh;
+  padding: 15px 0 100px 0;
+ }
+
+ #main-slider-login {
+  background-image: url('../img/background3_layered.png');
+  padding: 150px 0 100px 0;
+ }
+
+#main-slider-profile {
+  background-image: url('../img/background3_layered.png');
+  padding: 50px 0 100px 0;
+ }
+
+#main-slider, #main-slider-near-me, #main-slider-create-game, #main-slider-login, #main-slider-profile {
+  min-height: 1000px;
   background-attachment: fixed;
   background-size: cover;
   background-position: 50% 50%;
   background-repeat: no-repeat;
-  padding: 240px 0 240px 0;
-  color: #fff;
 }
+
 #main-slider .item {
   -moz-transition: opacity ease-in-out 500ms;
   -o-transition: opacity ease-in-out 500ms;
@@ -78,8 +300,8 @@ a:focus {
   width: 100%;
   display: block !important;
   z-index: 1;
-  text-align: center;
 }
+
 #main-slider .item:first-child {
   top: auto;
   position: relative;
@@ -362,6 +584,11 @@ a:focus {
   border-bottom-color: #52b6ec;
   margin: 0;
 }
+
+#services {
+  padding-top: 120px;
+}
+
 #services .box {
   padding-bottom: 0;
 }
@@ -644,7 +871,7 @@ textarea#message {
 }
 
 body {
-  min-height: 2000px;
+  min-height: 1000px;
   /*background-color: transparent;*/
   background-color: #666;
 }
@@ -674,57 +901,57 @@ body {
 }
 
 .testimonials-area .testimonials:after {
-	display:block;
-	clear:both;
-	content:'';
+  display:block;
+  clear:both;
+  content:'';
 }
 
 .testimonial-container {
-	-webkit-background-clip: border-box;
-	-webkit-background-origin: padding-box;
-	-webkit-background-size: auto;
-	-webkit-font-smoothing: antialiased;
-	background-attachment: scroll;
-	background-clip: border-box;
-	background-color: rgba(0, 0, 0, 0);
-	/*background-image: url('../img/grey_dash.gif'), url('../img/white_background_textured.jpg');*/
-	background-repeat: repeat-x, no-repeat;
-	background-origin: padding-box;
-	background-size: auto;
-	color: rgb(36, 60, 71);
-	display: block;
-	font-family: Arial, Helvetica, sans-serif;
-	font-size: 13px;
-	font-style: normal;
-	font-variant: normal;
-	font-weight: normal;
-	height: 224.265625px;
-	line-height: 19.006000518798828px;
-	overflow-x: hidden;
-	overflow-y: hidden;
-	padding-bottom: 0px;
-	padding-left: 0px;
-	padding-right: 0px;
-	padding-top: 1px;
+  -webkit-background-clip: border-box;
+  -webkit-background-origin: padding-box;
+  -webkit-background-size: auto;
+  -webkit-font-smoothing: antialiased;
+  background-attachment: scroll;
+  background-clip: border-box;
+  background-color: rgba(0, 0, 0, 0);
+  /*background-image: url('../img/grey_dash.gif'), url('../img/white_background_textured.jpg');*/
+  background-repeat: repeat-x, no-repeat;
+  background-origin: padding-box;
+  background-size: auto;
+  color: rgb(36, 60, 71);
+  display: block;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 13px;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  height: 224.265625px;
+  line-height: 19.006000518798828px;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  padding-bottom: 0px;
+  padding-left: 0px;
+  padding-right: 0px;
+  padding-top: 1px;
 }
 
 .testimonials {
-	margin: 0 auto;
+  margin: 0 auto;
 }
 
 blockquote {
-	display: block;
-	border: 0;
+  display: block;
+  border: 0;
 }
 
 blockquote q {
-	display: block;
-	font: italic 1.077em/1.357em Georgia, "Times New Roman", Times, serif;
-	color: #243c47;
+  display: block;
+  font: italic 1.077em/1.357em Georgia, "Times New Roman", Times, serif;
+  color: #243c47;
 }
 
 .gallery-list li {
-	list-style: none;
+  list-style: none;
 }
 
 @font-face {
@@ -742,119 +969,210 @@ blockquote q {
 /*These are the selectors for the PickItUp main title and subtext based on Screen Size*/
 
 @media(max-width:767px){
-	#main-slider h1 {
-		font-family: franchiseregular, serif;
-		margin: 0 auto;
-		font-size: 100px;
-	}
-	
-	#main-slider .lead {
-		font-family: franchiseregular, serif;
-		font-size: 25px;
-	}
+  #main-slider h1 {
+    font-family: franchiseregular, serif;
+    margin: 0 auto;
+    font-size: 100px;
+    text-align: center;
+}
+  
+  #main-slider .lead {
+    font-family: franchiseregular, serif;
+    font-size: 25px;
+    text-align: center;
+  }
 }
 
 @media(min-width:768px){
-	#main-slider h1 {
-		font-family: franchiseregular, serif;
-		margin: 0 auto;
-		font-size: 150px;
-	}
-	
-	#main-slider .lead {
-		font-family: franchiseregular, serif;
-		font-size: 37px;
-	}
+  #main-slider h1 {
+    font-family: franchiseregular, serif;
+    margin: 0 auto;
+    font-size: 150px;
+    text-align: center;
+  }
+  
+  #main-slider .lead {
+    font-family: franchiseregular, serif;
+    font-size: 37px;
+    text-align: center;
+  }
 }
 
 @media(min-width:992px){
-	#main-slider h1 {
-		font-family: franchiseregular, serif;
-		margin: 0 auto;
-		font-size: 200px;
-	}
+  #main-slider h1 {
+    font-family: franchiseregular, serif;
+    margin: 0 auto;
+    font-size: 200px;
+    text-align: center;
+  }
 
-	#main-slider .lead {
-		font-family: franchiseregular, serif;
-		font-size: 50px;
-	}
+  #main-slider .lead {
+    font-family: franchiseregular, serif;
+    font-size: 50px;
+    text-align: center;
+  }
 }
 
 @media(min-width:1200px){
-	#main-slider h1 {
-		font-family: franchiseregular, serif;
-		margin: 0 auto;
-		font-size: 200px;
-	}
-	
-	#main-slider .lead {
-		font-family: franchiseregular, serif;
-		font-size: 50px;
-	}
+  #main-slider h1 {
+    font-family: franchiseregular, serif;
+    margin: 0 auto;
+    font-size: 200px;
+    text-align: center;
+  }
+  
+  #main-slider .lead {
+    font-family: franchiseregular, serif;
+    font-size: 50px;
+    text-align: center;
+  }
 }
 
 
 .btn-primary {
-	background-image: -webkit-linear-gradient(top,#ff8000 0,#ff7000 100%);
-	background-image: linear-gradient(to bottom,#ff8000 0,#ff7000 100%);
-	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff428bca', endColorstr='#ff2d6ca2', GradientType=0);
-	filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
-	background-repeat: repeat-x;
-	border-color: #2b669a;
+  background-image: -webkit-linear-gradient(top,#ff8000 0,#ff7000 100%);
+  background-image: linear-gradient(to bottom,#ff8000 0,#ff7000 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff428bca', endColorstr='#ff2d6ca2', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+  background-repeat: repeat-x;
+  border-color: #2b669a;
 }
 
 .navbar-brand {
-	padding: 30px 0 30px 15px;
-	font-size: 18px;
+  padding: 30px 0 30px 15px;
+  font-size: 18px;
 }
 
 .navbar>.container .navbar-brand {
-	margin-left: 0;
+  margin-left: 0;
 }
 
 .navbar-nav.navbar-right:last-child {
-	margin-right: 0px;
+  margin-right: 0px;
 }
 
 .navbar-default .navbar-nav > li > a {
-	font-size: 18px;
+  font-size: 18px;
 }
 
 #main-slider {
-  padding: 150px 0;
+  padding: 50px 0;
 }
 
 ul.gallery-list {
-	padding-left: 0px;
+  padding-left: 0px;
 }
 
 .navbar {
-	margin-bottom: 0px;
+  margin-bottom: 0px;
 }
 
 .navbar-toggle {
-	margin-top: 22px;
+  margin-top: 22px;
 }
 
-#main-slider-near-me {
-  /*background-image: url('../img/background2_layered.png');*/
-  background-attachment: fixed;
-  background-size: cover;
-  background-position: 50% 50%;
-  background-repeat: no-repeat;
-  padding: 15px 0 240px 0;
+ /*body {
+/*  min-height: 1000px;
+ /*}
+
+ /*!
+ * Bootstrap v3.2.0 (http://getbootstrap.com)
+ * Copyright 2011-2014 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ *//*! normalize.css v3.0.1 | MIT License | git.io/normalize */
+
+ /*.row.titlebar .col-xs-3, .row.titlebar .col-sm-3, .row.titlebar .col-sm-3 button {
+  height: 100%;
+  vertical-align: middle
+ }*/
+ 
+ 
+ 
+.row.titlebar, .row.titlebar .btn-link {
+  background-color: #4D667E;
+  color: white;
+  link-color: white;
 }
 
-#main-slider-create-game {
-  /*background-image: url('../img/background3_layered.png');*/
-  background-attachment: fixed;
-  background-size: cover;
-  background-position: 50% 50%;
-  background-repeat: no-repeat;
-  height: 150vh;
-  padding: 15px 0 100px 0;
+.row.titlebar h1 {
+  margin: 10px;
+} 
+ 
+.row.player .player-details {
+  margin: 0px 10px;
+} 
+ 
+.row.player  .player-details .name {
+  font-size: 18px;
+  padding: 3px 0px;
+  margin: 0px;
+}
+ 
+.row.players, .row.join {
+  margin: 10px 0px;
+} 
+ 
+.row.join {
+  background-color: lightgray;
+}
+
+.row.join  h3 {
+  margin: 15px 0px;
+} 
+
+.row.join .col-xs-4 .btn {
+  padding: 5px 30px 5px 30px;
+} 
+
+.row.location h3, .row.timing h3, .row.description h2 {
+  margin: 10px 0px 3px 0px;
+}
+
+.row.timing .col-xs-1, .row.timing .col-xs-8, .row.location .col-xs-1, .row.location .col-xs-8, .row.join .col-xs-4, .row.join .col-xs-8, .row.join .col-xs-4, .row.player .col-xs-1, .row.player .col-xs-8  {
+    float:none;
+    display:inline-block;
+    vertical-align:middle;
+    margin-right:-4px;
+}
+
+.row.timing .glyphicon, .row.location .glyphicon, .row.player .glyphicon{
+  font-size: 32px;
+} 
+ 
+.row.titlebar .col-xs-3, .row.titlebar .col-xs-6 {
+    float:none;
+    display:inline-block;
+    vertical-align:middle;
+    margin-right:-4px;
+}
+
+.row.titlebar .col-xs-6 {
+  text-align: center;
+} 
+
+.row.titlebar .col-xs-3 .next {
+  text-align: right;
+} 
+ 
+.navigationbuttons * span {
+  display: block;
+  text-align: center;
  }
  
- body {
-	min-height: 1000px;
+ .navigation > ul.nav.nav_tabs {
+    width: 100%;
+    table-layout: fixed;
  }
+ 
+ .navigation > ul.nav.nav-tabs > li {
+    width: 33%;
+  float: left;
+}
+
+.navigation > ul.nav.nav-tabs > li > a {
+    text-align: center;
+}
+
+.submit-game {
+  width: 100%;
+}

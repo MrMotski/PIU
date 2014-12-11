@@ -1,56 +1,80 @@
-<section id="main-slider" class="carousel">
-	<div class="carousel-inner">
-		<div class="item active">
-			<div class="container">
-				<div class="carousel-content">
-					<h1>PickItUp!</h1>
-					<p class="lead">Find casual pickup games in your area!</p>
-					<div ng-if="!AuthService.isAuthenticated()">
-						<p>
-							<a ng-click="signUp()" role="button" class="btn btn-lg btn-primary">Sign Up! &#187;</a>
-						</p>
-						<p>
-							<a id="signupFB"  role="button" ng-click="signUpFB()" class="btn btn-lg btn-primary">Sign Up with Facebook! &#187;</a>
-						</p>
+<div id="main-slider" class="carousel">
+	<section id="signup">
+		<div class="carousel-inner">
+<!--			<div class="item active">-->
+				<div class="container">					
+				<h1>PickItUp!</h1>
+				
+				<p class="lead">Find casual pickup games in your area!</p>
+				
+				<div class="row">
+					<div ng-if="!AuthService.isAuthenticated()" class="col-xs-10 col-sm-7 col-md-6 col-lg-5 col-centered well signup-container">
+						{{status}}
+						<div class="row">
+							<div class="col-xs-10 col-centered">
+								<form role="form" name="loginForm" ng-submit="signUp(user)" novalidate>
+									<div class="form-group">
+										<label class="control-label" for="username">Username</label>
+										<input	ng-model="credentials.username" type="text" class="form-control" id="name" name="username" placeholder="ex: John Doe" required />
+									</div>
+									<div class="form-group">
+										<label class="control-label" for="email">E-mail</label>
+										<input ng-model="credentials.email" type="email" class="form-control" id="email" name="email" placeholder="john.doe@gmail.com" required />
+									</div>
+									<div class="form-group">
+										<label class="control-label" for="password">Password</label>
+										<input ng-model="credentials.password" type="password" class="form-control" id="password" name="password" placeholder="ex: mypass" required ng-minlength="6"/>
+									</div>
+									<div class="row">
+										<div ng-click="signUp(credentials)" class="signup-button signup-button-form col-xs-6 col-centered">
+   											Sign Up
+   										</div>
+									</div>
+								</form>
+							</div>
+						</div>			
+						<p class= "fb-intro"> ------------ OR ------------ </p>
+						<div class="row">
+   							<div class="signup-button signup-button-facebook fb-bg col-xs-12" ng-click="signUpFb()">
+   								Sign Up With Facebook
+   							</div>
+   						</div>	
 					</div>
 				</div>
+<!--			</div>-->
 			</div>
 		</div>
-	</div>
-	<a class="prev" href="#main-slider" data-slide="prev"><i
-		class="icon-angle-left"></i></a> <a class="next" href="#main-slider"
-		data-slide="next"><i class="icon-angle-right"></i></a>
-</section>
+	</section>
 
-<section id="services">
-	<div class="container">
-		<div class="box first">
-			<div class="row">
-				<div class="col-md-4 col-sm-6">
-					<div class="center">
-						<i class="icon-courts icon-md icon-color1"></i>
-						<h4>Find Courts</h4>
-						<p>Find the courts that are nearby or in a specific place. Discover the famous spots as well as unknown gems.</p>
+	<section id="services">
+		<div class="container">
+			<div class="box first">
+				<div class="row">
+					<div class="col-md-4 col-sm-6">
+						<div class="center">
+							<i class="icon-courts icon-md icon-color1"></i>
+							<h4>Find Courts</h4>
+							<p>Find the courts that are nearby or in a specific place. Discover the famous spots as well as unknown gems.</p>
+						</div>
 					</div>
-				</div>
-				<div class="col-md-4 col-sm-6">
-					<div class="center">
-						<i class="icon-players icon-md icon-color2"></i>
-						<h4>Meet Players</h4>
-						<p>Meet up with all players in your neighbourhood and play pick-up basketball. Meet new people, anywhere you are.</p>
+					<div class="col-md-4 col-sm-6">
+						<div class="center">
+							<i class="icon-players icon-md icon-color2"></i>
+							<h4>Meet Players</h4>
+							<p>Meet up with all players in your neighbourhood and play pick-up basketball. Meet new people, anywhere you are.</p>
+						</div>
 					</div>
-				</div>
-				<div class="col-md-4 col-sm-6">
-					<div class="center">
-						<i class="icon-ball icon-md icon-color3"></i>
-						<h4>Start Playing</h4>
-						<p>Use our app and get your game started in minutes. No more need to organize when, where and who... Use our platform instead.</p>
+					<div class="col-md-4 col-sm-6">
+						<div class="center">
+							<i class="icon-ball icon-md icon-color3"></i>
+							<h4>Start Playing</h4>
+							<p>Use our app and get your game started in minutes. No more need to organize when, where and who... Use our platform instead.</p>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-</section>
+	</section>
 
 <section id="testimonials">
 	<div class="container">
@@ -79,3 +103,4 @@
 		</div>
 	</div>
 </section>
+</div>
