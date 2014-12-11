@@ -8,6 +8,10 @@ var pickitupApp = angular.module('pickitup', [
   'services'
 ]);
 
+/* 	These are the routes to all the partials, directly served by the server and assigns the controllers for each route
+	Controllers are defined in controllers.js
+	QUESTION: can these templates be served by node instead of apache?
+*/
 pickitupApp.config([ '$routeProvider', function($routeProvider) {
 	$routeProvider.when('/home', {
 		templateUrl : 'partials/home.html',
@@ -28,7 +32,7 @@ pickitupApp.config([ '$routeProvider', function($routeProvider) {
 		templateUrl : 'partials/creategame.html',
 		controller : 'CreateGameCtrl'
 	}).when('/game/:uniqueId', {
-		templateUrl : 'partials/game.html',
+		templateUrl : 'partials/gameV2.html',
 		controller : 'GameDetailCtrl'
 	}).when('/player/:uniqueId', {
 		templateUrl : 'partials/player.html',
@@ -38,6 +42,10 @@ pickitupApp.config([ '$routeProvider', function($routeProvider) {
 	});
 } ]);
 
+/*
+	The interceptor will handle requests / responses with some defaults defined here.
+	What exactly is accomplished here?
+*/
 pickitupApp.factory('AuthInterceptor',  ['$rootScope', '$q', '$window', function($rootScope, $q, $window) {
 	return {
 		request : function(config) {
@@ -56,10 +64,13 @@ pickitupApp.factory('AuthInterceptor',  ['$rootScope', '$q', '$window', function
 	};
 }]);
 
+/* Adding the previously defined interceptor to the httpProvider */
 pickitupApp.config(function($httpProvider) {
 	$httpProvider.interceptors.push('AuthInterceptor');
 });
 
+/* This function is run the first in the while application */
+/* QUESTION: Find out what the $rootScope argument is */
 pickitupApp.run(function ($rootScope) {
     $rootScope.$on('$locationChangeSuccess', function (event, newUrl, oldUrl) {
     	var url = newUrl.substring(newUrl.indexOf('#')+1);
@@ -80,4 +91,3 @@ pickitupApp.run(function ($rootScope) {
     	}
     });
 });
-

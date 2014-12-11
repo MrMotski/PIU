@@ -6,7 +6,8 @@ var pickitupApp = angular.module('pickitup', [
 ]);
 
 pickitupApp.controller('FbCallbackCtrl', [ '$scope', '$window', '$location', 'AuthService', function($scope, $window, $location, AuthService) {
-	openFB.init('1432974593617773'); 
+	          /*'188532864674295'*/
+    openFB.init('1432974593617773'); 
     openFB.oauthCallback(requestedUrl, function(){
 		openFB.api({
             path: '/me',

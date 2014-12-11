@@ -10,6 +10,7 @@ controllers.controller('NavigationCtrl', [ '$scope', '$window', '$location', 'Au
 controllers.controller('SignUpCtrl', [ '$scope', '$window', '$location', 'AuthService', function($scope, $window,$location, AuthService) {
 	$scope.AuthService = AuthService;
 	
+	// The user in this function is a model defined by ng-model="user" in the signup.html partial
 	$scope.signUp = function(user) {
 		// Send data to server
 		AuthService.signup(user).then(function(data, status, headers, config) {
@@ -31,10 +32,12 @@ controllers.controller('SignUpCtrl', [ '$scope', '$window', '$location', 'AuthSe
 controllers.controller('HomeCtrl', [ '$scope', '$window', '$location', 'AuthService', function($scope, $window, $location, AuthService) {
 	$scope.AuthService = AuthService;
 
+	// Change these $scopes to this.?
 	$scope.signUp = function() {
 		$location.path('/signup');
 	};
 
+	// Where does this point to, in particular the 'email' argument?
 	$scope.signUpFB = function() {
 		openFB.login('email');
 	};
@@ -197,6 +200,7 @@ controllers.controller('LoginCtrl', [ '$scope', '$window', '$location', 'AuthSer
 	};
 
 	$scope.login = function(credentials) {
+		console.log('Pressed the login button');
 		AuthService.login(credentials).then(function(data, status, headers, config) {
 			$window.sessionStorage.token = data.data.token;
 			$window.sessionStorage.isAuthenticated = true;
